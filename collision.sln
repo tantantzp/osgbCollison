@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Example collision", "collision.vcxproj", "{CA66EF77-D8E9-4B59-A8AE-BE4CFD8F5035}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		MinSizeRel|Win32 = MinSizeRel|Win32
+		Release|Win32 = Release|Win32
+		RelWithDebInfo|Win32 = RelWithDebInfo|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CA66EF77-D8E9-4B59-A8AE-BE4CFD8F5035}.Debug|Win32.ActiveCfg = Debug|Win32
+		{CA66EF77-D8E9-4B59-A8AE-BE4CFD8F5035}.Debug|Win32.Build.0 = Debug|Win32
+		{CA66EF77-D8E9-4B59-A8AE-BE4CFD8F5035}.MinSizeRel|Win32.ActiveCfg = MinSizeRel|Win32
+		{CA66EF77-D8E9-4B59-A8AE-BE4CFD8F5035}.MinSizeRel|Win32.Build.0 = MinSizeRel|Win32
+		{CA66EF77-D8E9-4B59-A8AE-BE4CFD8F5035}.Release|Win32.ActiveCfg = Release|Win32
+		{CA66EF77-D8E9-4B59-A8AE-BE4CFD8F5035}.Release|Win32.Build.0 = Release|Win32
+		{CA66EF77-D8E9-4B59-A8AE-BE4CFD8F5035}.RelWithDebInfo|Win32.ActiveCfg = RelWithDebInfo|Win32
+		{CA66EF77-D8E9-4B59-A8AE-BE4CFD8F5035}.RelWithDebInfo|Win32.Build.0 = RelWithDebInfo|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

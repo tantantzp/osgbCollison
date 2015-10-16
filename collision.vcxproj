@@ -1,0 +1,343 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|Win32">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|Win32">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGUID>{CA66EF77-D8E9-4B59-A8AE-BE4CFD8F5035}</ProjectGUID>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>Win32</Platform>
+    <ProjectName>Example collision</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">F:\tzpRepository\osgbullet\build_vs2013\bin\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">collision.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">collisiond</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">F:\tzpRepository\osgbullet\build_vs2013\bin\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">collision.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">collision</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">F:\tzpRepository\osgbullet\build_vs2013\bin\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">collision.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">collision</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">F:\tzpRepository\osgbullet\build_vs2013\bin\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">collision.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">collision</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">true</GenerateManifest>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\ProgramLib\osgWorks\include;F:\tzpRepository\osgbullet\include;D:\ProgramLib\OpenSceneGraph-3.2.3\install\x86\include;D:\ProgramLib\bullet\include\bullet;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>Debug/</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;OSGBULLET_STATIC;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;OSGBULLET_STATIC;CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\ProgramLib\osgWorks\include;F:\tzpRepository\osgbullet\include;D:\ProgramLib\OpenSceneGraph-3.2.3\install\x86\include;D:\ProgramLib\bullet\include\bullet;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\ProgramLib\osgWorks\include;F:\tzpRepository\osgbullet\include;D:\ProgramLib\OpenSceneGraph-3.2.3\install\x86\include;D:\ProgramLib\bullet\include\bullet;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalOptions> /machine:X86 /debug %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;osgbCollisiond.lib;D:\ProgramLib\osgWorks\lib\osgwQueryd.lib;D:\ProgramLib\osgWorks\lib\osgwMxd.lib;D:\ProgramLib\osgWorks\lib\osgwControlsd.lib;D:\ProgramLib\OpenSceneGraph-3.2.3\install\x86\lib\OpenThreadsd.lib;D:\ProgramLib\OpenSceneGraph-3.2.3\install\x86\lib\osgd.lib;D:\ProgramLib\OpenSceneGraph-3.2.3\install\x86\lib\osgDBd.lib;D:\ProgramLib\OpenSceneGraph-3.2.3\install\x86\lib\osgUtild.lib;D:\ProgramLib\OpenSceneGraph-3.2.3\install\x86\lib\osgGAd.lib;D:\ProgramLib\OpenSceneGraph-3.2.3\install\x86\lib\osgTextd.lib;D:\ProgramLib\OpenSceneGraph-3.2.3\install\x86\lib\osgViewerd.lib;D:\ProgramLib\OpenSceneGraph-3.2.3\install\x86\lib\osgShadowd.lib;D:\ProgramLib\bullet\lib\BulletCollision.lib;D:\ProgramLib\bullet\lib\LinearMath.lib;D:\ProgramLib\osgWorks\lib\osgwToolsd.lib;glu32.lib;opengl32.lib;D:\ProgramLib\OpenSceneGraph-3.2.3\install\x86\lib\osgGA.lib;D:\ProgramLib\OpenSceneGraph-3.2.3\install\x86\lib\osgText.lib;D:\ProgramLib\OpenSceneGraph-3.2.3\install\x86\lib\osgViewer.lib;D:\ProgramLib\OpenSceneGraph-3.2.3\install\x86\lib\osgSim.lib;D:\ProgramLib\OpenSceneGraph-3.2.3\install\x86\lib\osgDB.lib;D:\ProgramLib\OpenSceneGraph-3.2.3\install\x86\lib\osgUtil.lib;D:\ProgramLib\OpenSceneGraph-3.2.3\install\x86\lib\osg.lib;D:\ProgramLib\OpenSceneGraph-3.2.3\install\x86\lib\OpenThreads.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>F:/tzpRepository/osgbullet/build_vs2013/lib/Debug/collisiond.lib</ImportLibrary>
+      <ProgramDataBaseFile>F:/tzpRepository/osgbullet/build_vs2013/bin/Debug/collisiond.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+      <Version>
+      </Version>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\ProgramLib\osgWorks\include;F:\tzpRepository\osgbullet\include;D:\ProgramLib\OpenSceneGraph-3.2.3\install\x86\include;D:\ProgramLib\bullet\include\bullet;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>Release/</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;OSGBULLET_STATIC;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;OSGBULLET_STATIC;CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\ProgramLib\osgWorks\include;F:\tzpRepository\osgbullet\include;D:\ProgramLib\OpenSceneGraph-3.2.3\install\x86\include;D:\ProgramLib\bullet\include\bullet;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\ProgramLib\osgWorks\include;F:\tzpRepository\osgbullet\include;D:\ProgramLib\OpenSceneGraph-3.2.3\install\x86\include;D:\ProgramLib\bullet\include\bullet;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalOptions> /machine:X86 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;osgbCollision.lib;D:\ProgramLib\osgWorks\lib\osgwQuery.lib;D:\ProgramLib\osgWorks\lib\osgwMx.lib;D:\ProgramLib\osgWorks\lib\osgwControls.lib;D:\ProgramLib\OpenSceneGraph-3.2.3\install\x86\lib\OpenThreads.lib;D:\ProgramLib\OpenSceneGraph-3.2.3\install\x86\lib\osg.lib;D:\ProgramLib\OpenSceneGraph-3.2.3\install\x86\lib\osgDB.lib;D:\ProgramLib\OpenSceneGraph-3.2.3\install\x86\lib\osgUtil.lib;D:\ProgramLib\OpenSceneGraph-3.2.3\install\x86\lib\osgGA.lib;D:\ProgramLib\OpenSceneGraph-3.2.3\install\x86\lib\osgText.lib;D:\ProgramLib\OpenSceneGraph-3.2.3\install\x86\lib\osgViewer.lib;D:\ProgramLib\OpenSceneGraph-3.2.3\install\x86\lib\osgShadow.lib;D:\ProgramLib\bullet\lib\BulletCollision.lib;D:\ProgramLib\bullet\lib\LinearMath.lib;D:\ProgramLib\osgWorks\lib\osgwTools.lib;glu32.lib;opengl32.lib;D:\ProgramLib\OpenSceneGraph-3.2.3\install\x86\lib\osgSim.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>F:/tzpRepository/osgbullet/build_vs2013/lib/Release/collision.lib</ImportLibrary>
+      <ProgramDataBaseFile>F:/tzpRepository/osgbullet/build_vs2013/bin/Release/collision.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+      <Version>
+      </Version>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\ProgramLib\osgWorks\include;F:\tzpRepository\osgbullet\include;D:\ProgramLib\OpenSceneGraph-3.2.3\install\x86\include;D:\ProgramLib\bullet\include\bullet;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>MinSizeRel/</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;OSGBULLET_STATIC;CMAKE_INTDIR="MinSizeRel";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;OSGBULLET_STATIC;CMAKE_INTDIR=\"MinSizeRel\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\ProgramLib\osgWorks\include;F:\tzpRepository\osgbullet\include;D:\ProgramLib\OpenSceneGraph-3.2.3\install\x86\include;D:\ProgramLib\bullet\include\bullet;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\ProgramLib\osgWorks\include;F:\tzpRepository\osgbullet\include;D:\ProgramLib\OpenSceneGraph-3.2.3\install\x86\include;D:\ProgramLib\bullet\include\bullet;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalOptions> /machine:X86 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;..\..\lib\MinSizeRel\osgbCollision.lib;D:\ProgramLib\osgWorks\lib\osgwQueryd.lib;D:\ProgramLib\osgWorks\lib\osgwMxd.lib;D:\ProgramLib\osgWorks\lib\osgwControlsd.lib;D:\ProgramLib\OpenSceneGraph-3.2.3\install\x86\lib\OpenThreads.lib;D:\ProgramLib\OpenSceneGraph-3.2.3\install\x86\lib\osg.lib;D:\ProgramLib\OpenSceneGraph-3.2.3\install\x86\lib\osgDB.lib;D:\ProgramLib\OpenSceneGraph-3.2.3\install\x86\lib\osgUtil.lib;D:\ProgramLib\OpenSceneGraph-3.2.3\install\x86\lib\osgGA.lib;D:\ProgramLib\OpenSceneGraph-3.2.3\install\x86\lib\osgText.lib;D:\ProgramLib\OpenSceneGraph-3.2.3\install\x86\lib\osgViewer.lib;D:\ProgramLib\OpenSceneGraph-3.2.3\install\x86\lib\osgShadow.lib;D:\ProgramLib\bullet\lib\BulletCollision.lib;D:\ProgramLib\bullet\lib\LinearMath.lib;D:\ProgramLib\osgWorks\lib\osgwToolsd.lib;glu32.lib;opengl32.lib;D:\ProgramLib\OpenSceneGraph-3.2.3\install\x86\lib\osgGA.lib;D:\ProgramLib\OpenSceneGraph-3.2.3\install\x86\lib\osgText.lib;D:\ProgramLib\OpenSceneGraph-3.2.3\install\x86\lib\osgViewer.lib;D:\ProgramLib\OpenSceneGraph-3.2.3\install\x86\lib\osgSim.lib;D:\ProgramLib\OpenSceneGraph-3.2.3\install\x86\lib\OpenThreads.lib;D:\ProgramLib\OpenSceneGraph-3.2.3\install\x86\lib\osg.lib;D:\ProgramLib\OpenSceneGraph-3.2.3\install\x86\lib\osgDB.lib;D:\ProgramLib\OpenSceneGraph-3.2.3\install\x86\lib\osgUtil.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>F:/tzpRepository/osgbullet/build_vs2013/lib/MinSizeRel/collision.lib</ImportLibrary>
+      <ProgramDataBaseFile>F:/tzpRepository/osgbullet/build_vs2013/bin/MinSizeRel/collision.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+      <Version>
+      </Version>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\ProgramLib\osgWorks\include;F:\tzpRepository\osgbullet\include;D:\ProgramLib\OpenSceneGraph-3.2.3\install\x86\include;D:\ProgramLib\bullet\include\bullet;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>RelWithDebInfo/</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;OSGBULLET_STATIC;CMAKE_INTDIR="RelWithDebInfo";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;OSGBULLET_STATIC;CMAKE_INTDIR=\"RelWithDebInfo\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\ProgramLib\osgWorks\include;F:\tzpRepository\osgbullet\include;D:\ProgramLib\OpenSceneGraph-3.2.3\install\x86\include;D:\ProgramLib\bullet\include\bullet;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\ProgramLib\osgWorks\include;F:\tzpRepository\osgbullet\include;D:\ProgramLib\OpenSceneGraph-3.2.3\install\x86\include;D:\ProgramLib\bullet\include\bullet;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalOptions> /machine:X86 /debug %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;..\..\lib\RelWithDebInfo\osgbCollision.lib;D:\ProgramLib\osgWorks\lib\osgwQueryd.lib;D:\ProgramLib\osgWorks\lib\osgwMxd.lib;D:\ProgramLib\osgWorks\lib\osgwControlsd.lib;D:\ProgramLib\OpenSceneGraph-3.2.3\install\x86\lib\OpenThreads.lib;D:\ProgramLib\OpenSceneGraph-3.2.3\install\x86\lib\osg.lib;D:\ProgramLib\OpenSceneGraph-3.2.3\install\x86\lib\osgDB.lib;D:\ProgramLib\OpenSceneGraph-3.2.3\install\x86\lib\osgUtil.lib;D:\ProgramLib\OpenSceneGraph-3.2.3\install\x86\lib\osgGA.lib;D:\ProgramLib\OpenSceneGraph-3.2.3\install\x86\lib\osgText.lib;D:\ProgramLib\OpenSceneGraph-3.2.3\install\x86\lib\osgViewer.lib;D:\ProgramLib\OpenSceneGraph-3.2.3\install\x86\lib\osgShadow.lib;D:\ProgramLib\bullet\lib\BulletCollision.lib;D:\ProgramLib\bullet\lib\LinearMath.lib;D:\ProgramLib\osgWorks\lib\osgwToolsd.lib;glu32.lib;opengl32.lib;D:\ProgramLib\OpenSceneGraph-3.2.3\install\x86\lib\osgGA.lib;D:\ProgramLib\OpenSceneGraph-3.2.3\install\x86\lib\osgText.lib;D:\ProgramLib\OpenSceneGraph-3.2.3\install\x86\lib\osgViewer.lib;D:\ProgramLib\OpenSceneGraph-3.2.3\install\x86\lib\osgSim.lib;D:\ProgramLib\OpenSceneGraph-3.2.3\install\x86\lib\OpenThreads.lib;D:\ProgramLib\OpenSceneGraph-3.2.3\install\x86\lib\osg.lib;D:\ProgramLib\OpenSceneGraph-3.2.3\install\x86\lib\osgDB.lib;D:\ProgramLib\OpenSceneGraph-3.2.3\install\x86\lib\osgUtil.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>F:/tzpRepository/osgbullet/build_vs2013/lib/RelWithDebInfo/collision.lib</ImportLibrary>
+      <ProgramDataBaseFile>F:/tzpRepository/osgbullet/build_vs2013/bin/RelWithDebInfo/collision.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+      <Version>
+      </Version>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="F:\tzpRepository\osgbullet\examples\collision\CMakeLists.txt">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Building Custom Rule F:/tzpRepository/osgbullet/examples/collision/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
+D:\cmake\bin\cmake.exe -HF:/tzpRepository/osgbullet -BF:/tzpRepository/osgbullet/build_vs2013 --check-stamp-file F:\tzpRepository\osgbullet\build_vs2013\examples\collision\CMakeFiles\generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">F:/tzpRepository/osgbullet/examples/collision/CMakeLists.txt;F:\tzpRepository\osgbullet\examples\collision\CMakeLists.txt;F:\tzpRepository\osgbullet\examples\collision\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">F:\tzpRepository\osgbullet\build_vs2013\examples\collision\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Building Custom Rule F:/tzpRepository/osgbullet/examples/collision/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+D:\cmake\bin\cmake.exe -HF:/tzpRepository/osgbullet -BF:/tzpRepository/osgbullet/build_vs2013 --check-stamp-file F:\tzpRepository\osgbullet\build_vs2013\examples\collision\CMakeFiles\generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">F:/tzpRepository/osgbullet/examples/collision/CMakeLists.txt;F:\tzpRepository\osgbullet\examples\collision\CMakeLists.txt;F:\tzpRepository\osgbullet\examples\collision\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">F:\tzpRepository\osgbullet\build_vs2013\examples\collision\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">Building Custom Rule F:/tzpRepository/osgbullet/examples/collision/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">setlocal
+D:\cmake\bin\cmake.exe -HF:/tzpRepository/osgbullet -BF:/tzpRepository/osgbullet/build_vs2013 --check-stamp-file F:\tzpRepository\osgbullet\build_vs2013\examples\collision\CMakeFiles\generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">F:/tzpRepository/osgbullet/examples/collision/CMakeLists.txt;F:\tzpRepository\osgbullet\examples\collision\CMakeLists.txt;F:\tzpRepository\osgbullet\examples\collision\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">F:\tzpRepository\osgbullet\build_vs2013\examples\collision\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">Building Custom Rule F:/tzpRepository/osgbullet/examples/collision/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">setlocal
+D:\cmake\bin\cmake.exe -HF:/tzpRepository/osgbullet -BF:/tzpRepository/osgbullet/build_vs2013 --check-stamp-file F:\tzpRepository\osgbullet\build_vs2013\examples\collision\CMakeFiles\generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">F:/tzpRepository/osgbullet/examples/collision/CMakeLists.txt;F:\tzpRepository\osgbullet\examples\collision\CMakeLists.txt;F:\tzpRepository\osgbullet\examples\collision\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">F:\tzpRepository\osgbullet\build_vs2013\examples\collision\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="F:/tzpRepository/osgbullet/build_vs2013/ZERO_CHECK.vcxproj">
+      <Project>5569D86A-80CA-45A9-BBF9-17DECD159987</Project>
+    </ProjectReference>
+    <ProjectReference Include="F:/tzpRepository/osgbullet/build_vs2013/src/osgbCollision/osgbCollision.vcxproj">
+      <Project>B17A7719-ABEA-42CC-B850-9308B8752B7D</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="PickModelHandler.h" />
+    <ClInclude Include="Utils.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="collision.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
