@@ -113,7 +113,7 @@ bool PickModelHandler::handle(const osgGA::GUIEventAdapter &ea, osgGA::GUIAction
 			ref_ptr<osgUtil::LineSegmentIntersector> intersector = 
 				new osgUtil::LineSegmentIntersector(osgUtil::Intersector::WINDOW, ea.getX(), ea.getY());
 			osgUtil::IntersectionVisitor iv(intersector.get());
-			iv.setTraversalMask(~0x1);
+			iv.setTraversalMask(~0x1);    //avoid choosing the Node Mask
 			viewer->getCamera()->accept(iv);
 
 			// update last selected model.
@@ -123,7 +123,7 @@ bool PickModelHandler::handle(const osgGA::GUIEventAdapter &ea, osgGA::GUIAction
 				BoundingBox bb = result.drawable->getBound();
 				//Vec3 worldCenter = bb.center() * computeLocalToWorld(result.nodePath);
 
-				_selectionBox->setNodeMask(0x1);
+				_selectionBox->setNodeMask(0x1);  //avoid choosing the Node Mask
 				Matrix mat = Matrix::scale(bb.xMax() - bb.xMin(), bb.yMax() - bb.yMin(), bb.zMax() - bb.zMin())/* * Matrix::translate(worldCenter)*/;
 				//_selectionBox->setMatrix(mat);
 
@@ -134,13 +134,56 @@ bool PickModelHandler::handle(const osgGA::GUIEventAdapter &ea, osgGA::GUIAction
 				bool flag = false;
 				for (int i = nSize - 1; i >= 0; i--)
 				{
+					cout << np[i]->className() << endl;
+
+				    int xmax = INT_MIN, xmin = INT_MAX, ymax INT_MIN, ymin = INT_MAX, zmax INT_MIN, zmin = INT_MAX;
+					bool hasgeoflag = false;
 					if (strcmp(np[i]->className(), "MatrixTransform") == 0)
 					{
-						_lastModel = dynamic_cast<MatrixTransform *>(np[i]);					
+						_lastModel = dynamic_cast<MatrixTransform *>(np[i]);	
+						int childNum = _lastModel->getNumChildren();
+
+
+						for (int j = 0; j < childNum; j++) {
+							if (strcmp(_lastModel->getChild(j)->className(), "Group") == 0) {
+								Group*  tgroup = dynamic_cast<Group *>(_lastModel->getChild(j));
+								int groupChildNum = tgroup->getNumChildren();
+								for (int k = 0; k < groupChildNum; k++) {
+									Node* tmpNode = tgroup->getChild(k);
+									if (strcmp(tmpNode->className(), "Geode") == 0) {
+										Geode*  tgeo = dynamic_cast<Geode *>(tmpNode);
+										int drawNum = tgeo->getNumDrawables();
+										if (drawNum > 0) {
+											BoundingBox tbb = tgeo->getDrawable(0)->getBound();
+											if (tbb.xMax() > xmax) xmax = tbb.xMax();
+											if (tbb.xMin() < xmin) xmin = tbb.xMin();
+											if (tbb.yMax() > ymax) ymax = tbb.yMax();
+											if (tbb.yMin() < ymin) ymin = tbb.yMin();
+											if (tbb.zMax() > zmax) zmax = tbb.zMax();
+											if (tbb.zMin() < zmin) zmin = tbb.zMin();
+											hasgeoflag = true;
+										}
+									 }
+							     }
+						    }
+						}
+						
+						cout << "hasgeoflag:  " << flag << endl;
+						if (hasgeoflag) 
+							mat = Matrix::scale(xmax - xmin, ymax - ymin, zmax - zmin);
+						else {
+							BoundingSphere tbb = _lastModel->getBound();
+							//cout << tbb.radius() << "  " << tbb.radius2() << "  " << tbb.center() << endl;
+							float radius = tbb.radius() * 0.6;
+							mat = Matrix::scale(2 * radius, 2 * radius, 2 * radius);
+						}
+
+
+
 						_selectCollisionObj = objMap[_lastModel];
         				mat *= _lastModel->getMatrix();
 						flag = true;
-						cout << "flag true" << endl;
+						//cout << "flag true" << endl;
 						break;
 					}
 				}
@@ -180,14 +223,15 @@ bool PickModelHandler::handle(const osgGA::GUIEventAdapter &ea, osgGA::GUIAction
 
 		Matrix oriMatrix = _lastModel->getMatrix();
 		Matrix oriSmatrix = _selectionBox->getMatrix();
+
 		Matrix matrix = _lastModel->getMatrix();
 		Matrix smatrix = _selectionBox->getMatrix();
 
-		Vec3d oritmpTrans = matrix.getTrans();
-		Quat oritmpQuat = matrix.getRotate();
-		Matrix oritMatrix;
-		oritMatrix *= Matrix::translate(oritmpTrans);
-		oritMatrix *= Matrix::rotate(oritmpQuat);
+		//Vec3d oritmpTrans = matrix.getTrans();
+		//Quat oritmpQuat = matrix.getRotate();
+		//Matrix oritMatrix;
+		//oritMatrix *= Matrix::translate(oritmpTrans);
+		//oritMatrix *= Matrix::rotate(oritmpQuat);
 
 		Vec3d transVec1 = matrix.getTrans();
 		Vec3d transVec2 = smatrix.getTrans();
@@ -243,24 +287,18 @@ bool PickModelHandler::handle(const osgGA::GUIEventAdapter &ea, osgGA::GUIAction
 		}
 		//if (rotateflag)
 		//{
-
 		matrix *= Matrix::translate(transVec1);
 		smatrix *= Matrix::translate(transVec2);
-
 		_lastModel->setMatrix(matrix);
 		_selectionBox->setMatrix(smatrix);
-
 		btCollisionObject* tmpColObj = _selectCollisionObj;
 		_collisionWorld->removeCollisionObject(_selectCollisionObj);
 		_selectCollisionObj = new btCollisionObject;
-
 		_selectCollisionObj->setCollisionShape(osgbCollision::btConvexHullCollisionShapeFromOSG(_lastModel.get()));
 		_selectCollisionObj->setCollisionFlags(btCollisionObject::CF_KINEMATIC_OBJECT);
 		_collisionWorld->addCollisionObject(_selectCollisionObj);
-
 		_collisionWorld->performDiscreteCollisionDetection();
 		detectCollision(_colState, _collisionWorld);
-
 		if (_colState == true)
 		{
 			_lastModel->setMatrix(oriMatrix);
@@ -269,80 +307,108 @@ bool PickModelHandler::handle(const osgGA::GUIEventAdapter &ea, osgGA::GUIAction
 			delete _selectCollisionObj;
 			_selectCollisionObj = tmpColObj;
 			_collisionWorld->addCollisionObject(_selectCollisionObj);
-
 			_colState = false;
-
 		}
 		else
 		{
 			delete tmpColObj;
 			objMap[_lastModel] = _selectCollisionObj;
-
 		}
+	    //}
+	//	else
+		
+		//{
+		//	bool isScale = false;
+		//	btVector3 scaleFactor(1, 1, 1);
+		//	btVector3 unscaleFactor(1, 1, 1);
+		//	switch (ea.getKey())
+		//	{
+		//	case 'k':
+		//	case 'K':
+		//		matrix *= Matrix::rotate(-0.1f, Z_AXIS);
+		//		smatrix *= Matrix::rotate(-0.1f, Z_AXIS);
+		//		break;
+		//	case 'l':
+		//	case 'L':
+		//		matrix *= Matrix::rotate(0.1f, Z_AXIS);
+		//		smatrix *= Matrix::rotate(0.1f, Z_AXIS);
+		//		break;
+		//	case 'm':
+		//	case 'M':
+		//		matrix *= Matrix::scale(1.1f, 1.1f, 1.1f);
+		//		smatrix *= Matrix::scale(1.1f, 1.1f, 1.1f);
+		//		isScale = true;
+		//		scaleFactor.setValue(1.1, 1.1, 1.1);
+		//		unscaleFactor.setValue(1 / 1.1, 1 / 1.1, 1 / 1.1);
+		//		break;
+		//	case 'n':
+		//	case 'N':
+		//		matrix *= Matrix::scale(0.9f, 0.9f, 0.9f);
+		//		smatrix *= Matrix::scale(0.9f, 0.9f, 0.9f);
+		//		isScale = true;
+		//		scaleFactor.setValue(0.9, 0.9, 0.9);
+		//		unscaleFactor.setValue(1 / 0.9, 1 / 0.9, 1 / 0.9);
+		//		break;
+		//	case 'd':
+		//	case 'D':
+		//		transVec1 += Vec3d(0.2f, 0.0f, 0.0f);
+		//		transVec2 += Vec3d(0.2f, 0.0f, 0.0f);
+		//		break;
+		//	case 'a':
+		//	case 'A':
+		//		transVec1 += Vec3d(-0.2f, 0.0f, 0.0f);
+		//		transVec2 += Vec3d(-0.2f, 0.0f, 0.0f);
+		//		break;
+		//	case 'w':
+		//	case 'W':
+		//		transVec1 += Vec3d(0.0f, 0.0f, 0.2f);
+		//		transVec2 += Vec3d(0.0f, 0.0f, 0.2f);
+		//		break;
+		//	case 's':
+		//	case 'S':
+		//		transVec1 += Vec3d(-0.0f, 0.0f, -0.2f);
+		//		transVec2 += Vec3d(-0.0f, 0.0f, -0.2f);
+		//		break;
+		//	default:
+		//		break;
+		//	}
+		//	matrix *= Matrix::translate(transVec1);
+		//	smatrix *= Matrix::translate(transVec2);
+		//	//Vec3d tmpTrans = matrix.getTrans();
+		//	//Quat tmpQuat = matrix.getRotate();
+		//	//Matrix tMatrix;
+		//	//tMatrix *= Matrix::translate(tmpTrans);
+		//	//tMatrix *= Matrix::rotate(tmpQuat);
 
-	//}
-		/*else
-		{
-			switch (ea.getKey())
-			{
-			case 'k':
-			case 'K':
-				matrix *= Matrix::rotate(-0.1f, Z_AXIS);
-				smatrix *= Matrix::rotate(-0.1f, Z_AXIS);
-				break;
-			case 'l':
-			case 'L':
-				matrix *= Matrix::rotate(0.1f, Z_AXIS);
-				smatrix *= Matrix::rotate(0.1f, Z_AXIS);
-				break;
-			case 'd':
-			case 'D':
-				transVec1 += Vec3d(0.2f, 0.0f, 0.0f);
-				transVec2 += Vec3d(0.2f, 0.0f, 0.0f);
-				break;
-			case 'a':
-			case 'A':
-				transVec1 += Vec3d(-0.2f, 0.0f, 0.0f);
-				transVec2 += Vec3d(-0.2f, 0.0f, 0.0f);
-				break;
-			case 'w':
-			case 'W':
-				transVec1 += Vec3d(0.0f, 0.0f, 0.2f);
-				transVec2 += Vec3d(0.0f, 0.0f, 0.2f);
-				break;
-			case 's':
-			case 'S':
-				transVec1 += Vec3d(-0.0f, 0.0f, -0.2f);
-				transVec2 += Vec3d(-0.0f, 0.0f, -0.2f);
-				break;
-			default:
-				break;
-			}
+		//	_lastModel->setMatrix(matrix);
+		//	_selectionBox->setMatrix(smatrix);
+		//	if (isScale) {
+		//		cout << "scale" << endl;
+		//		_selectCollisionObj->getCollisionShape()->setLocalScaling(scaleFactor);
+		//		_collisionWorld->updateSingleAabb(_selectCollisionObj);
+		//		
+		//	}
+		//	else {
+		//		_selectCollisionObj->setWorldTransform(osgbCollision::asBtTransform(matrix));
 
-			matrix *= Matrix::translate(transVec1);
-			smatrix *= Matrix::translate(transVec2);
-			Vec3d tmpTrans = matrix.getTrans();
-			Quat tmpQuat = matrix.getRotate();
-			Matrix tMatrix;
-			tMatrix *= Matrix::translate(tmpTrans);
-			tMatrix *= Matrix::rotate(tmpQuat);
-
-			_lastModel->setMatrix(matrix);
-			_selectionBox->setMatrix(smatrix);
-			_selectCollisionObj->setWorldTransform(osgbCollision::asBtTransform(tMatrix));
-
-			_collisionWorld->performDiscreteCollisionDetection();
-			detectCollision(_colState, _collisionWorld);
-
-			if (_colState == true)
-			{
-				_lastModel->setMatrix(oriMatrix);
-				_selectionBox->setMatrix(oriSmatrix);
-				_selectCollisionObj->setWorldTransform(osgbCollision::asBtTransform(oritMatrix));
-				_colState = false;
-			}
-
-		}*/
+		//	}
+		//	_collisionWorld->performDiscreteCollisionDetection();
+		//	detectCollision(_colState, _collisionWorld);
+		//	if (_colState == true)
+		//	{
+		//		_lastModel->setMatrix(oriMatrix);
+		//		_selectionBox->setMatrix(oriSmatrix);
+		//		if (isScale) {
+		//			cout << "unscale" << endl;
+		//			_selectCollisionObj->getCollisionShape()->setLocalScaling(unscaleFactor);
+		//			_collisionWorld->updateSingleAabb(_selectCollisionObj);
+		//		}
+		//		else {
+		//			_selectCollisionObj->setWorldTransform(osgbCollision::asBtTransform(oriMatrix));
+		//		}
+		//		_colState = false;
+		//	}
+		//}
 
 	}
 

@@ -137,7 +137,7 @@ osg::Group* createScene(btCollisionWorld* cw, PickModelHandler *picker, osg::Arg
    // osg::Geode* geode = new osg::Geode;
    // geode->addDrawable( osgwTools::makeBox( osg::Vec3( .5, .5, .5 ) ) );
 
-	ref_ptr<Node> model1 = osgDB::readNodeFile("cow.osg");
+	ref_ptr<Node> model1 = osgDB::readNodeFile("D:/ProgramLib/objs/bed/Bedroom_0/0.obj");  //;cow.osg");
 	Matrix transMatrix1 = osg::Matrix::translate(-8., 0., 0.);
     ref_ptr<MatrixTransform> trans1 = new MatrixTransform(transMatrix1);
 	trans1->addChild(model1.get());
@@ -159,15 +159,16 @@ osg::Group* createScene(btCollisionWorld* cw, PickModelHandler *picker, osg::Arg
     //geode->addDrawable( osgwTools::makeBox( osg::Vec3( .5, .5, .5 ) ) );
 
 	ref_ptr<Node> model2 = osgDB::readNodeFile("cow.osg");
-    Matrix transMatrix2 = osg::Matrix::translate( 8., 0., 0. );
+    Matrix transMatrix2 = osg::Matrix::translate( 100, 0., 0. );
 	ref_ptr<MatrixTransform> trans2 = new MatrixTransform(transMatrix2);
     trans2->addChild(model2.get());
     root->addChild(trans2.get());
 
 	btCollisionObject* btBoxObject2 = new btCollisionObject;
 	
+
 	btBoxObject2->setCollisionShape(osgbCollision::btConvexHullCollisionShapeFromOSG(model2.get()));
-    //btBoxObject2->setCollisionShape( osgbCollision::btBoxCollisionShapeFromOSG( model2.get()));
+	//btBoxObject2->setCollisionShape( osgbCollision::btBoxCollisionShapeFromOSG( model2.get()));
     btBoxObject2->setCollisionFlags( btCollisionObject::CF_KINEMATIC_OBJECT );
     btBoxObject2->setWorldTransform( osgbCollision::asBtTransform( transMatrix2 ) );
     cw->addCollisionObject( btBoxObject2 );
